@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
             routes: appRoutes,
             theme: appTheme,
             initialRoute: '/',
+            debugShowCheckedModeBanner: false,
           );
         }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/login/login.dart';
 import 'package:quizapp/service/auth.dart';
+import 'package:quizapp/shared/loading.dart';
 import 'package:quizapp/topics/topics.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       stream: AuthService().userStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text('Loading');
+          return const LoadingScreen();
         } else if (snapshot.hasError) {
           return const Text('Error');
         } else if (snapshot.hasData) {

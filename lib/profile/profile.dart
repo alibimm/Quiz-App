@@ -26,6 +26,7 @@ class ProfileScreen extends StatelessWidget {
               Container(
                 width: 100,
                 height: 100,
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(

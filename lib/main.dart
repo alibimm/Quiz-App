@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:quizapp/routes.dart';
+import 'package:quizapp/service/firestore.dart';
+import 'package:quizapp/service/models.dart';
+import 'package:quizapp/shared/loading.dart';
 import 'package:quizapp/theme.dart';
 
 void main() {
@@ -27,16 +31,25 @@ class _MyAppState extends State<MyApp> {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            title: 'Quiz-App',
-            routes: appRoutes,
-            theme: appTheme,
-            initialRoute: '/',
-            debugShowCheckedModeBanner: false,
+          return StreamProvider(
+            create: (_) => FirestoreService().streamReport(),
+            initialData: Report(),
+            child: MaterialApp(
+              title: 'Quiz-App',
+              routes: appRoutes,
+              theme: appTheme,
+              initialRoute: '/',
+              debugShowCheckedModeBanner: false,
+            ),
           );
         }
-
-        return const MaterialApp();
+        
+        return MaterialApp(
+          routes: {
+            '/': (context) => const LoadingScreen(),
+          },
+          initialRoute: '/',
+        );
       },
     );
   }

@@ -4,6 +4,7 @@ import 'package:quizapp/service/models.dart';
 import 'package:quizapp/shared/bottom_navbar.dart';
 import 'package:quizapp/shared/error.dart';
 import 'package:quizapp/shared/loading.dart';
+import 'package:quizapp/topics/drawer.dart';
 import 'package:quizapp/topics/topic_item.dart';
 
 class TopicsScreen extends StatelessWidget {
@@ -27,6 +28,7 @@ class TopicsScreen extends StatelessWidget {
               title: const Text('Topics'),
               backgroundColor: Colors.deepPurple,
             ),
+            drawer: TopicDrawer(topics: topics),
             bottomNavigationBar: const BottomNavBar(),
             body: GridView.count(
               primary: false,

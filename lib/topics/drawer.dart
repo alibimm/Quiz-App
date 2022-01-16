@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:quizapp/quiz/quiz.dart';
 import 'package:quizapp/service/models.dart';
 
 class TopicDrawer extends StatelessWidget {
@@ -48,7 +49,10 @@ class QuizList extends StatelessWidget {
         return Card(
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => QuizScreen(quizId: quiz.id)));
+            },
             child: Container(
               padding: const EdgeInsets.all(8),
               child: ListTile(
